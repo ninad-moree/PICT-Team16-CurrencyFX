@@ -8,6 +8,8 @@ import '../model/chart.dart';
 import '../widgets/currency_dropdown.dart';
 import '../widgets/duration_dropdown.dart';
 
+enum DurationType { weekly, monthly, quarterly, yearly }
+
 class CurrencyExchangePage extends StatefulWidget {
   const CurrencyExchangePage({Key? key}) : super(key: key);
 
@@ -20,19 +22,22 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
   String selectedCurrency1 = 'USD';
   String selectedCurrency2 = 'EUR';
   String selectedDuration = 'Monthly';
+  int selectedYear = 2022;
 
   late List<String> currencyColumns = [];
   late List<List<dynamic>> csvData = [];
 
-  @override
-  void initState() {
-    super.initState();
-    loadCSVData();
-  }
+  DurationType selectedDurationType = DurationType.monthly;
 
-  Future<void> loadCSVData() async {
-    String csvString = await rootBundle.loadString('Merged.csv');
-    // await rootBundle.loadString('assets/Exchange_Rate_Report_2012.csv');
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   loadCSVData();
+  // }
+
+  Future<void> loadCSVData(int selectedYear) async {
+    String csvString = await rootBundle
+        .loadString('csvs/Exchange_Rate_Report_$selectedYear.csv');
 
     List<List<dynamic>> parsedCsv =
         const CsvToListConverter().convert(csvString);
@@ -104,6 +109,28 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
                 });
               },
             ),
+            if (selectedDuration == 'Yearly')
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: DropdownButton<int>(
+                  value: selectedYear,
+                  onChanged: (int? newValue) {
+                    setState(() {
+                      selectedYear = newValue ?? 2022;
+                      loadCSVData(selectedYear);
+                    });
+                  },
+                  items: List<DropdownMenuItem<int>>.generate(
+                    11,
+                    (index) {
+                      return DropdownMenuItem<int>(
+                        value: 2012 + index,
+                        child: Text((2012 + index).toString()),
+                      );
+                    },
+                  ),
+                ),
+              ),
             const SizedBox(height: 20),
             Expanded(
               child: SfCartesianChart(
