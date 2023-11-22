@@ -8,8 +8,6 @@ import '../model/chart.dart';
 import '../widgets/currency_dropdown.dart';
 import '../widgets/duration_dropdown.dart';
 
-enum DurationType { weekly, monthly, quarterly, yearly }
-
 class CurrencyExchangePage extends StatefulWidget {
   const CurrencyExchangePage({Key? key}) : super(key: key);
 
@@ -26,8 +24,6 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
 
   late List<String> currencyColumns = [];
   late List<List<dynamic>> csvData = [];
-
-  DurationType selectedDurationType = DurationType.monthly;
 
   @override
   void initState() {
