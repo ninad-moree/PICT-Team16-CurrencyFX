@@ -18,7 +18,7 @@ class CurrencyExchangePage extends StatefulWidget {
 
 class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
   String selectedCurrency1 = 'USD';
-  String selectedCurrency2 = 'EUR';
+  String selectedCurrency2 = 'INR';
   String selectedDuration = 'Yearly';
   int selectedYear = 2022;
 
@@ -33,7 +33,7 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
 
   Future<void> loadCSVData(int selectedYear) async {
     String csvString = await rootBundle
-        .loadString('csvs/Exchange_Rate_Report_$selectedYear.csv');
+        .loadString('year_csvs/Exchange_Rate_Report_$selectedYear.csv');
 
     List<List<dynamic>> parsedCsv =
         const CsvToListConverter().convert(csvString);
