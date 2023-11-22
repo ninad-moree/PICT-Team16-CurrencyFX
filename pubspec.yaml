@@ -27,6 +27,7 @@ flutter:
 
   assets:
       - assets/year_csvs/
+      - assets/quarter_csvs/
       - assets/final.csv
       - assets/Merged.csv
   #   - images/a_dot_burr.jpeg
