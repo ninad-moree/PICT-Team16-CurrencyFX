@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # nthack
 
 A new Flutter project.
@@ -18,3 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 =======
 # PICT-Team16-CurrencyFX
 >>>>>>> 04005e7f4abed49bc5bbb38612c91c669af769b3
+=======
+# PICT-Team16-CurrencyFX
+>>>>>>> a4125d26c49949631ae732feac4079608f47f287
