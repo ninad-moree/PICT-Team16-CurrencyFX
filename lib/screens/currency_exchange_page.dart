@@ -31,8 +31,8 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
   }
 
   Future<void> loadCSVData() async {
-    String csvString =
-        await rootBundle.loadString('assets/Exchange_Rate_Report_2012.csv');
+    String csvString = await rootBundle.loadString('Merged.csv');
+    // await rootBundle.loadString('assets/Exchange_Rate_Report_2012.csv');
 
     List<List<dynamic>> parsedCsv =
         const CsvToListConverter().convert(csvString);

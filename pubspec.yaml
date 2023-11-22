@@ -28,4 +28,5 @@ flutter:
   assets:
       - assets/Exchange_Rate_Report_2012.csv
       - assets/final.csv
+      - assets/Merged.csv
   #   - images/a_dot_burr.jpeg
