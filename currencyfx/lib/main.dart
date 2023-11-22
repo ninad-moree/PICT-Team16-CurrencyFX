@@ -1,6 +1,9 @@
 import 'package:currencyfx/model/currencymodel.dart';
+import 'package:currencyfx/views/conversion.dart';
 import 'package:currencyfx/views/data.dart';
+import 'package:currencyfx/views/singlecurrency.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,10 +12,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    readCSV('assets/Merged.csv');
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -33,14 +37,36 @@ class MyHomePage extends StatelessWidget {
         title: Text('Home'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DataScreen()),
-            );
-          },
-          child: Text('View Data'),
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DataScreen()),
+                );
+              },
+              child: Text('View Data'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CurrencyDataByDate()),
+                );
+              },
+              child: Text('View Data'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Conversion()),
+                );
+              },
+              child: Text('View Data'),
+            ),
+          ],
         ),
       ),
     );
