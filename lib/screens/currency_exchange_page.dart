@@ -21,7 +21,7 @@ class CurrencyExchangePage extends StatefulWidget {
 class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
   String selectedCurrency1 = 'USD';
   String selectedCurrency2 = 'EUR';
-  String selectedDuration = 'Monthly';
+  String selectedDuration = 'Yearly';
   int selectedYear = 2022;
 
   late List<String> currencyColumns = [];
@@ -29,11 +29,11 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
 
   DurationType selectedDurationType = DurationType.monthly;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   loadCSVData();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    loadCSVData(selectedYear);
+  }
 
   Future<void> loadCSVData(int selectedYear) async {
     String csvString = await rootBundle
@@ -68,6 +68,37 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     }
 
     return chartData;
+  }
+
+  Widget buildChart() {
+    if (csvData.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return SfCartesianChart(
+        primaryXAxis: DateTimeAxis(
+          dateFormat: DateFormat.yMMM(),
+          interval: 1, // Set an appropriate interval
+          // labelRotation: 90,
+        ),
+        primaryYAxis: NumericAxis(
+          title: AxisTitle(
+            text: 'Value of $selectedCurrency2 wrt $selectedCurrency1',
+          ),
+        ),
+        series: <FastLineSeries<ChartSampleData, DateTime>>[
+          FastLineSeries<ChartSampleData, DateTime>(
+            dataSource: getChartData(
+              selectedCurrency1,
+              selectedCurrency2,
+            ),
+            xValueMapper: (ChartSampleData sales, _) => sales.time,
+            yValueMapper: (ChartSampleData sales, _) => sales.value,
+          ),
+        ],
+        plotAreaBackgroundColor: Colors.white,
+        plotAreaBorderColor: Colors.grey,
+      );
+    }
   }
 
   @override
@@ -133,30 +164,7 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
               ),
             const SizedBox(height: 20),
             Expanded(
-              child: SfCartesianChart(
-                primaryXAxis: DateTimeAxis(
-                  dateFormat: DateFormat.yMMM(),
-                  interval: 1, // Set an appropriate interval
-                  // labelRotation: 90,
-                ),
-                primaryYAxis: NumericAxis(
-                  title: AxisTitle(
-                    text: 'Value of $selectedCurrency2 wrt $selectedCurrency1',
-                  ),
-                ),
-                series: <FastLineSeries<ChartSampleData, DateTime>>[
-                  FastLineSeries<ChartSampleData, DateTime>(
-                    dataSource: getChartData(
-                      selectedCurrency1,
-                      selectedCurrency2,
-                    ),
-                    xValueMapper: (ChartSampleData sales, _) => sales.time,
-                    yValueMapper: (ChartSampleData sales, _) => sales.value,
-                  ),
-                ],
-                plotAreaBackgroundColor: Colors.white,
-                plotAreaBorderColor: Colors.grey,
-              ),
+              child: buildChart(),
             ),
           ],
         ),
