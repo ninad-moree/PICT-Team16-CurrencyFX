@@ -16,7 +16,6 @@ class DurationDropdown extends StatelessWidget {
       value: selectedDuration,
       onChanged: onChanged,
       items: [
-        'Weekly',
         'Monthly',
         'Quarterly',
         'Yearly',
