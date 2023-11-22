@@ -40,6 +40,7 @@ dependencies:
   mysql1: ^0.20.0
   fl_chart: ^0.64.0
   get: ^4.6.6
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

@@ -25,7 +25,6 @@ class _CurrencyDataByDateState extends State<CurrencyDataByDate> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
-        // Call the filterDataDate function when the date is selected
         filterData();
       });
     }
@@ -73,9 +72,9 @@ class _CurrencyDataByDateState extends State<CurrencyDataByDate> {
                             filteredData[index].rates.entries.map((entry) {
                           return Row(
                             children: [
-                              Text(entry.key),
+                              Text(
+                                  '${entry.key.toString().trim()} : ${double.parse(entry.value.toString()).toStringAsFixed(2)}'),
                               const SizedBox(height: 30),
-                              Text(entry.value)
                             ],
                           );
                         }).toList(),

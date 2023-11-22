@@ -18,7 +18,7 @@ class _ConversionState extends State<Conversion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Currency Data Filter'),
+        title: const Text('Currency Data Filter'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -27,15 +27,15 @@ class _ConversionState extends State<Conversion> {
           children: [
             ElevatedButton(
               onPressed: () => _selectDate(context),
-              child: Text('Select Date'),
+              child: const Text('Select Date'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Currency Code: ${selectedCurrencyCode.trim()}',
-                  style: TextStyle(fontSize: 16.0),
+                  style: const TextStyle(fontSize: 16.0),
                 ),
                 PopupMenuButton<String>(
                   initialValue: selectedCurrencyCode,
@@ -56,14 +56,14 @@ class _ConversionState extends State<Conversion> {
                 ),
               ],
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             selectedDate != null
                 ? Text(
                     'Selected Date: ${DateFormat('yyyy-MM-dd').format(selectedDate!)}',
-                    style: TextStyle(fontSize: 16.0),
+                    style: const TextStyle(fontSize: 16.0),
                   )
-                : Text('Null'),
-            SizedBox(height: 16.0),
+                : const Text('Null'),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
                 double result =
@@ -74,10 +74,10 @@ class _ConversionState extends State<Conversion> {
                       'The value of ${selectedCurrencyCode.toString().trim()} on ${DateFormat('yyyy-MM-dd').format(selectedDate!)}  was  ${result.toStringAsFixed(3)} against the USD dollar';
                 });
               },
-              child: Text('Show Data'),
+              child: const Text('Show Data'),
             ),
             message == ''
-                ? Text('Enter date and Currency')
+                ? const Text('Enter date and Currency')
                 : Text(message.toString()),
           ],
         ),

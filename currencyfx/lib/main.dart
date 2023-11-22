@@ -5,6 +5,8 @@ import 'package:currencyfx/views/singlecurrency.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'views/liveexchange.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -62,6 +64,15 @@ class MyHomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Conversion()),
+                );
+              },
+              child: Text('View Data'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Home()),
                 );
               },
               child: Text('View Data'),

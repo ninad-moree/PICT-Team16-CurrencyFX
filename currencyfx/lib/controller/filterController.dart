@@ -6,7 +6,9 @@ import 'package:get/get.dart';
 import 'VariableController.dart';
 
 Future<List<CurrencyRate>> filterData(DateTime start, DateTime end) async {
+  final Data controller = Get.put(Data());
   List<CurrencyRate> allData = await readCSV('assets/Merged.csv');
+  controller.allData = allData;
   List<CurrencyRate> data = allData
       .where((entry) => entry.date.isAfter(start) && entry.date.isBefore(end))
       .toList();
@@ -14,7 +16,9 @@ Future<List<CurrencyRate>> filterData(DateTime start, DateTime end) async {
 }
 
 Future<List<CurrencyRate>> filterDataDate(DateTime date) async {
+  final Data controller = Get.put(Data());
   List<CurrencyRate> allData = await readCSV('assets/Merged.csv');
+
   List<CurrencyRate> data =
       allData.where((entry) => entry.date.isAtSameMomentAs(date)).toList();
 
