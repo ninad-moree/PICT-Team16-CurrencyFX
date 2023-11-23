@@ -29,4 +29,9 @@ flutter:
       - assets/year_csvs/
       - assets/quarter_csvs/
       - assets/month_csvs/
-  #   - images/a_dot_burr.jpeg
+  
+  fonts: 
+      - family: OpenSans
+        fonts:
+          - asset: assets/fonts/OpenSans-Light.ttf
+          - asset: assets/fonts/OpenSans-Medium.ttf

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nthack/utils/constants.dart';
 
 class DurationDropdown extends StatelessWidget {
   final String selectedDuration;
@@ -22,7 +23,10 @@ class DurationDropdown extends StatelessWidget {
       ].map<DropdownMenuItem<String>>((String duration) {
         return DropdownMenuItem<String>(
           value: duration,
-          child: Text(duration),
+          child: Text(
+            duration,
+            style: kDropDownMenuTextStyle,
+          ),
         );
       }).toList(),
     );

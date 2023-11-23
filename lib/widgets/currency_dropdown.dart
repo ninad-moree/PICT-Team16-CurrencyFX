@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nthack/utils/constants.dart';
 
 class CurrencyDropdown extends StatelessWidget {
   final String selectedCurrency;
@@ -26,7 +27,10 @@ class CurrencyDropdown extends StatelessWidget {
       items: currencies.map<DropdownMenuItem<String>>((String currency) {
         return DropdownMenuItem<String>(
           value: currency,
-          child: Text(currency),
+          child: Text(
+            currency,
+            style: kDropDownMenuTextStyle,
+          ),
         );
       }).toList(),
     );

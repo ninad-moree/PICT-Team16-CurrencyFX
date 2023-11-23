@@ -1,6 +1,7 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:nthack/utils/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/services.dart';
 
@@ -147,41 +148,6 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     return chartData;
   }
 
-  Widget buildChart() {
-    if (csvData.isEmpty) {
-      return const Center(
-        child: Text(
-          'No data available',
-        ),
-      );
-    } else {
-      return SfCartesianChart(
-        primaryXAxis: DateTimeAxis(
-          dateFormat: DateFormat.yMMM(),
-          interval: 1, // Set an appropriate interval
-          // labelRotation: 90,
-        ),
-        primaryYAxis: NumericAxis(
-          title: AxisTitle(
-            text: 'Value of $selectedCurrency2 wrt $selectedCurrency1',
-          ),
-        ),
-        series: <FastLineSeries<ChartSampleData, DateTime>>[
-          FastLineSeries<ChartSampleData, DateTime>(
-            dataSource: getChartData(
-              selectedCurrency1,
-              selectedCurrency2,
-            ),
-            xValueMapper: (ChartSampleData sales, _) => sales.time,
-            yValueMapper: (ChartSampleData sales, _) => sales.value,
-          ),
-        ],
-        plotAreaBackgroundColor: Colors.white,
-        plotAreaBorderColor: Colors.grey,
-      );
-    }
-  }
-
   Widget buildQuarterlyDropdown() {
     if (selectedDuration != 'Quarterly') {
       return const SizedBox.shrink();
@@ -200,7 +166,10 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
               (index) {
                 return DropdownMenuItem<int>(
                   value: 2012 + index,
-                  child: Text((2012 + index).toString()),
+                  child: Text(
+                    (2012 + index).toString(),
+                    style: kTextStyle,
+                  ),
                 );
               },
             ),
@@ -219,7 +188,10 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
               (index) {
                 return DropdownMenuItem<int>(
                   value: index + 1,
-                  child: Text('Quarter ${index + 1}'),
+                  child: Text(
+                    'Quarter ${index + 1}',
+                    style: kTextStyle,
+                  ),
                 );
               },
             ),
@@ -247,7 +219,10 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
               (index) {
                 return DropdownMenuItem<int>(
                   value: 2012 + index,
-                  child: Text((2012 + index).toString()),
+                  child: Text(
+                    (2012 + index).toString(),
+                    style: kTextStyle,
+                  ),
                 );
               },
             ),
@@ -266,7 +241,10 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
               (index) {
                 return DropdownMenuItem<int>(
                   value: index + 1,
-                  child: Text('Month ${index + 1}'),
+                  child: Text(
+                    'Month ${index + 1}',
+                    style: kTextStyle,
+                  ),
                 );
               },
             ),
@@ -276,12 +254,41 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     }
   }
 
+  Widget buildChart() {
+    if (csvData.isEmpty) {
+      return const Center(
+        child: Text(
+          'No data available',
+        ),
+      );
+    } else {
+      return SfCartesianChart(
+        primaryXAxis: DateTimeAxis(),
+        primaryYAxis: NumericAxis(
+          title: AxisTitle(
+            text: 'Value of $selectedCurrency2 wrt $selectedCurrency1',
+            textStyle: kTextStyle,
+          ),
+        ),
+        series: <FastLineSeries<ChartSampleData, DateTime>>[
+          FastLineSeries<ChartSampleData, DateTime>(
+            dataSource: getChartData(
+              selectedCurrency1,
+              selectedCurrency2,
+            ),
+            xValueMapper: (ChartSampleData sales, _) => sales.time,
+            yValueMapper: (ChartSampleData sales, _) => sales.value,
+          ),
+        ],
+        plotAreaBackgroundColor: Colors.white,
+        plotAreaBorderColor: Colors.grey,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Currency Exchange Rate Analysis'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -331,7 +338,10 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
                     (index) {
                       return DropdownMenuItem<int>(
                         value: 2012 + index,
-                        child: Text((2012 + index).toString()),
+                        child: Text(
+                          (2012 + index).toString(),
+                          style: kTextStyle,
+                        ),
                       );
                     },
                   ),
