@@ -1,4 +1,5 @@
 import 'package:currencyfx/model/currencymodel.dart';
+import 'package:currencyfx/views/currency_exchange_page.dart';
 import 'package:currencyfx/views/data.dart';
 import 'package:currencyfx/views/singlecurrency.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,6 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           children: [
             DataScreen(),
-            //       CurrencyDataByDate(),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -54,6 +54,20 @@ class MyHomePage extends StatelessWidget {
               },
               child:
                   Text('Click Here to know your currency on a particular date'),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CurrencyExchangePage()),
+                );
+              },
+              child: Text(
+                  'Click here for Yearly,Monthly,Quartely graphs and charts of different Currencies'),
             ),
             SizedBox(
               height: 20,
