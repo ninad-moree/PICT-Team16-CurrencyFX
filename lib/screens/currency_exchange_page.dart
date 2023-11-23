@@ -148,55 +148,123 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     return chartData;
   }
 
+  Widget buildYearlyDropDown() {
+    return Align(
+      alignment: Alignment.center,
+      child: IntrinsicWidth(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            decoration: BoxDecoration(
+              color: Colors.grey[900], // Dark background color
+              borderRadius: BorderRadius.circular(8.0), // Rounded corners
+            ),
+            child: DropdownButton<int>(
+              value: selectedYear,
+              onChanged: (int? newValue) {
+                setState(() {
+                  selectedYear = newValue ?? 2022;
+                  loadCSVData(selectedYear);
+                });
+              },
+              dropdownColor: Colors.grey[900], // Dark dropdown background color
+              underline: Container(),
+              items: List<DropdownMenuItem<int>>.generate(
+                11,
+                (index) {
+                  return DropdownMenuItem<int>(
+                    value: 2012 + index,
+                    child: Text(
+                      (2012 + index).toString(),
+                      style:
+                          kDropDownMenuTextStyle.copyWith(color: Colors.white),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget buildQuarterlyDropdown() {
     if (selectedDuration != 'Quarterly') {
       return const SizedBox.shrink();
     } else {
-      return Row(
-        children: [
-          DropdownButton<int>(
-            value: selectedYear,
-            onChanged: (int? newValue) {
-              setState(() {
-                selectedYear = newValue ?? 2022;
-              });
-            },
-            items: List<DropdownMenuItem<int>>.generate(
-              11,
-              (index) {
-                return DropdownMenuItem<int>(
-                  value: 2012 + index,
-                  child: Text(
-                    (2012 + index).toString(),
-                    style: kTextStyle,
+      return Align(
+        alignment: Alignment.center,
+        child: IntrinsicWidth(
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[900], // Dark background color
+                  borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                ),
+                child: DropdownButton<int>(
+                  value: selectedYear,
+                  onChanged: (int? newValue) {
+                    setState(() {
+                      selectedYear = newValue ?? 2022;
+                    });
+                  },
+                  dropdownColor: Colors.grey[900],
+                  underline: Container(),
+                  items: List<DropdownMenuItem<int>>.generate(
+                    11,
+                    (index) {
+                      return DropdownMenuItem<int>(
+                        value: 2012 + index,
+                        child: Text(
+                          (2012 + index).toString(),
+                          style: kDropDownMenuTextStyle.copyWith(
+                              color: Colors.white),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          ),
-          const SizedBox(width: 20),
-          DropdownButton<int>(
-            value: selectedQuarter,
-            onChanged: (int? newValue) {
-              setState(() {
-                selectedQuarter = newValue ?? 1; // Update selected quarter
-                loadQuarterlyCSVData(selectedYear, selectedQuarter);
-              });
-            },
-            items: List<DropdownMenuItem<int>>.generate(
-              4,
-              (index) {
-                return DropdownMenuItem<int>(
-                  value: index + 1,
-                  child: Text(
-                    'Quarter ${index + 1}',
-                    style: kTextStyle,
+                ),
+              ),
+              const SizedBox(width: 20),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[900], // Dark background color
+                  borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                ),
+                child: DropdownButton<int>(
+                  value: selectedQuarter,
+                  onChanged: (int? newValue) {
+                    setState(() {
+                      selectedQuarter =
+                          newValue ?? 1; // Update selected quarter
+                      loadQuarterlyCSVData(selectedYear, selectedQuarter);
+                    });
+                  },
+                  dropdownColor: Colors.grey[900],
+                  underline: Container(),
+                  items: List<DropdownMenuItem<int>>.generate(
+                    4,
+                    (index) {
+                      return DropdownMenuItem<int>(
+                        value: index + 1,
+                        child: Text(
+                          'Quarter ${index + 1}',
+                          style: kDropDownMenuTextStyle.copyWith(
+                              color: Colors.white),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       );
     }
   }
@@ -205,51 +273,76 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     if (selectedDuration != 'Monthly') {
       return const SizedBox.shrink();
     } else {
-      return Row(
-        children: [
-          DropdownButton<int>(
-            value: selectedYear,
-            onChanged: (int? newValue) {
-              setState(() {
-                selectedYear = newValue ?? 2022;
-              });
-            },
-            items: List<DropdownMenuItem<int>>.generate(
-              11,
-              (index) {
-                return DropdownMenuItem<int>(
-                  value: 2012 + index,
-                  child: Text(
-                    (2012 + index).toString(),
-                    style: kTextStyle,
+      return Align(
+        alignment: Alignment.center,
+        child: IntrinsicWidth(
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[900], // Dark background color
+                  borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                ),
+                child: DropdownButton<int>(
+                  value: selectedYear,
+                  onChanged: (int? newValue) {
+                    setState(() {
+                      selectedYear = newValue ?? 2022;
+                    });
+                  },
+                  dropdownColor: Colors.grey[900],
+                  underline: Container(),
+                  items: List<DropdownMenuItem<int>>.generate(
+                    11,
+                    (index) {
+                      return DropdownMenuItem<int>(
+                        value: 2012 + index,
+                        child: Text(
+                          (2012 + index).toString(),
+                          style: kDropDownMenuTextStyle.copyWith(
+                              color: Colors.white),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          ),
-          const SizedBox(width: 20),
-          DropdownButton<int>(
-            value: selectedMonth,
-            onChanged: (int? newValue) {
-              setState(() {
-                selectedMonth = newValue ?? 1; // Update selected month
-                loadMonthlyCSVData(selectedYear, selectedMonth);
-              });
-            },
-            items: List<DropdownMenuItem<int>>.generate(
-              12,
-              (index) {
-                return DropdownMenuItem<int>(
-                  value: index + 1,
-                  child: Text(
-                    'Month ${index + 1}',
-                    style: kTextStyle,
+                ),
+              ),
+              const SizedBox(width: 20),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[900], // Dark background color
+                  borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                ),
+                child: DropdownButton<int>(
+                  value: selectedMonth,
+                  onChanged: (int? newValue) {
+                    setState(() {
+                      selectedMonth = newValue ?? 1; // Update selected month
+                      loadMonthlyCSVData(selectedYear, selectedMonth);
+                    });
+                  },
+                  dropdownColor: Colors.grey[900],
+                  underline: Container(),
+                  items: List<DropdownMenuItem<int>>.generate(
+                    12,
+                    (index) {
+                      return DropdownMenuItem<int>(
+                        value: index + 1,
+                        child: Text(
+                          'Month ${index + 1}',
+                          style: kDropDownMenuTextStyle.copyWith(
+                              color: Colors.white),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       );
     }
   }
@@ -266,12 +359,14 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
         primaryXAxis: DateTimeAxis(),
         primaryYAxis: NumericAxis(
           title: AxisTitle(
-            text: 'Value of $selectedCurrency2 wrt $selectedCurrency1',
+            text:
+                'Value of ${selectedCurrency2.trim()}  wrt  ${selectedCurrency1.trim()}',
             textStyle: kTextStyle,
           ),
         ),
         series: <FastLineSeries<ChartSampleData, DateTime>>[
           FastLineSeries<ChartSampleData, DateTime>(
+            color: Colors.amber,
             dataSource: getChartData(
               selectedCurrency1,
               selectedCurrency2,
@@ -280,8 +375,8 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
             yValueMapper: (ChartSampleData sales, _) => sales.value,
           ),
         ],
-        plotAreaBackgroundColor: Colors.white,
-        plotAreaBorderColor: Colors.grey,
+        plotAreaBackgroundColor: Colors.grey[700],
+        plotAreaBorderColor: Colors.white,
       );
     }
   }
@@ -291,69 +386,63 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CurrencyDropdown(
-              selectedCurrency: selectedCurrency1,
-              currencies: currencyColumns,
-              onChanged: (newValue) {
-                setState(() {
-                  selectedCurrency1 = newValue!;
-                });
-              },
-            ),
-            const SizedBox(height: 20),
-            CurrencyDropdown(
-              selectedCurrency: selectedCurrency2,
-              currencies: currencyColumns,
-              onChanged: (newValue) {
-                setState(() {
-                  selectedCurrency2 = newValue!;
-                });
-              },
-            ),
-            const SizedBox(height: 20),
-            DurationDropdown(
-              selectedDuration: selectedDuration,
-              onChanged: (newValue) {
-                setState(() {
-                  selectedDuration = newValue!;
-                });
-              },
-            ),
-            if (selectedDuration == 'Yearly')
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: DropdownButton<int>(
-                  value: selectedYear,
-                  onChanged: (int? newValue) {
-                    setState(() {
-                      selectedYear = newValue ?? 2022;
-                      loadCSVData(selectedYear);
-                    });
-                  },
-                  items: List<DropdownMenuItem<int>>.generate(
-                    11,
-                    (index) {
-                      return DropdownMenuItem<int>(
-                        value: 2012 + index,
-                        child: Text(
-                          (2012 + index).toString(),
-                          style: kTextStyle,
-                        ),
-                      );
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Expanded(
+              //   child: buildChart(),
+              // ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: buildChart(),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CurrencyDropdown(
+                    selectedCurrency: selectedCurrency1,
+                    currencies: currencyColumns,
+                    onChanged: (newValue) {
+                      setState(() {
+                        selectedCurrency1 = newValue!;
+                      });
                     },
                   ),
+                  const SizedBox(width: 20),
+                  CurrencyDropdown(
+                    selectedCurrency: selectedCurrency2,
+                    currencies: currencyColumns,
+                    onChanged: (newValue) {
+                      setState(() {
+                        selectedCurrency2 = newValue!;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 20),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: DurationDropdown(
+                  selectedDuration: selectedDuration,
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedDuration = newValue!;
+                    });
+                  },
                 ),
               ),
-            if (selectedDuration == 'Quarterly') buildQuarterlyDropdown(),
-            if (selectedDuration == 'Monthly') buildMonthlyDropdown(),
-            const SizedBox(height: 20),
-            Expanded(
-              child: buildChart(),
-            ),
-          ],
+              if (selectedDuration == 'Yearly') buildYearlyDropDown(),
+              if (selectedDuration == 'Quarterly') const SizedBox(height: 10),
+              buildQuarterlyDropdown(),
+              if (selectedDuration == 'Monthly') const SizedBox(height: 10),
+              buildMonthlyDropdown(),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

@@ -10,11 +10,9 @@ class CurrencyExchangeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Currency Exchange Rate Analysis',
-      // theme: ThemeData.dark(),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       home: const CurrencyExchangePage(),
     );
   }

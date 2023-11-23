@@ -21,18 +21,27 @@ class CurrencyDropdown extends StatelessWidget {
       });
     }
 
-    return DropdownButton<String>(
-      value: selectedCurrency,
-      onChanged: onChanged,
-      items: currencies.map<DropdownMenuItem<String>>((String currency) {
-        return DropdownMenuItem<String>(
-          value: currency,
-          child: Text(
-            currency,
-            style: kDropDownMenuTextStyle,
-          ),
-        );
-      }).toList(),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      decoration: BoxDecoration(
+        color: Colors.grey[900], // Dark background color
+        borderRadius: BorderRadius.circular(8.0), // Rounded corners
+      ),
+      child: DropdownButton<String>(
+        value: selectedCurrency,
+        onChanged: onChanged,
+        dropdownColor: Colors.grey[900], // Dark dropdown background color
+        underline: Container(),
+        items: currencies.map<DropdownMenuItem<String>>((String currency) {
+          return DropdownMenuItem<String>(
+            value: currency,
+            child: Text(
+              currency.trim(),
+              style: kDropDownMenuTextStyle.copyWith(color: Colors.white),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }
