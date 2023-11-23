@@ -20,6 +20,9 @@ How to run the project
 Libraries Used/Requirements:
 1.Pandas
 2.Numpy
+![WhatsApp Image 2023-11-23 at 10 12 36 (2)](https://github.com/FireFeast7/PICT-Team16-CurrencyFX/assets/132999100/0dfe0d57-a4cb-46fa-b025-8ef058f95a7b)
+![WhatsApp Image 2023-11-23 at 10 12 36 (1)](https://github.com/FireFeast7/PICT-Team16-CurrencyFX/assets/132999100/251788e5-682d-4d1f-a536-6e748b441d2a)
+![WhatsApp Image 2023-11-23 at 10 12 35](https://github.com/FireFeast7/PICT-Team16-CurrencyFX/assets/132999100/7a15a6a8-9e60-4023-baf1-0662274e13c4)
 
 
 
