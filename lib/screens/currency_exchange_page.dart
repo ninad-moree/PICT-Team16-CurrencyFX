@@ -69,8 +69,8 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     } catch (e) {
       log('Error loading CSV file: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error loading CSV file: $e'),
+        const SnackBar(
+          content: Text('Sorry Data Not Available'),
         ),
       );
     }
@@ -91,8 +91,8 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
     } catch (e) {
       log('Error loading CSV file: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error loading CSV file: $e'),
+        const SnackBar(
+          content: Text('Sorry Data Not Available'),
         ),
       );
     }
