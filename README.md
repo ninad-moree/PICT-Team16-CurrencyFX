@@ -20,7 +20,6 @@ How to run the project
 Libraries Used/Requirements:
 1.Pandas
 2.Numpy
-3.Statsmodel
 
 
 
