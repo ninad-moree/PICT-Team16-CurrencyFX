@@ -12,13 +12,13 @@ We have created a dashboard which allows the users to analyze the exchange rates
  4. For a date selected by the user, the rate of a particular currency against the USD is displayed
 
  Extra Features:
- 1. Model to predict the currency rate in the future
+ 1. Model to predict the currency rate in the future using Sarima(Seasonal Autoregressive Integrated Moving Average)
 
 How to run the project
 1.Clone the Repository
 2.Navigate to the Project
 3.Install Dependencies
-4.Run the App (using flutter dependencies)
+4.Run the App (using flutter dependencies) 
 
 Libraries Used/Requirements:
 1.Pandas
