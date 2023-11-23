@@ -2,6 +2,7 @@ import 'package:currencyfx/components/anyToAny.dart';
 import 'package:currencyfx/components/usdToAny.dart';
 import 'package:currencyfx/model/ratesmodel.dart';
 import 'package:currencyfx/network.dart';
+import 'package:currencyfx/views/conversion.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -30,7 +31,10 @@ class _HomeState extends State<Home> {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
-        appBar: AppBar(title: const Text('Open Exchange Flutter')),
+        appBar: AppBar(
+          title: const Text('CurrencyFX'),
+          centerTitle: true,
+        ),
         body: Container(
           height: h,
           width: w,
@@ -64,6 +68,9 @@ class _HomeState extends State<Home> {
                                 currencies: currSnapshot.data!,
                                 rates: snapshot.data!.rates,
                               ),
+                              Card(
+                                child: Conversion(),
+                              )
                             ],
                           );
                         }),

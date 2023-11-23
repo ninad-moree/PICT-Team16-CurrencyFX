@@ -28,11 +28,10 @@ class _UsdToAnyState extends State<UsdToAny> {
               children: [
                 const Text(
                   'USD to Any Currency',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 const SizedBox(height: 20),
 
-                //TextFields for Entering USD
                 TextFormField(
                   key: const ValueKey('usd'),
                   controller: usdController,
@@ -42,13 +41,12 @@ class _UsdToAnyState extends State<UsdToAny> {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    //Future Builder for getting all currencies for dropdown list
                     Expanded(
                       child: DropdownButton<String>(
                         value: dropdownValue,
                         icon: const Icon(Icons.arrow_drop_down_rounded),
-                        iconSize: 24,
-                        elevation: 16,
+                        iconSize: 20,
+                        elevation: 10,
                         isExpanded: true,
                         underline: Container(
                           height: 2,
@@ -74,21 +72,15 @@ class _UsdToAnyState extends State<UsdToAny> {
                       width: 10,
                     ),
 
-                    //Convert Button
                     Container(
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            answer = usdController.text +
-                                ' USD = ' +
-                                convertusd(widget.rates, usdController.text,
-                                    dropdownValue) +
-                                ' ' +
-                                dropdownValue;
+                            answer = '${usdController.text} USD = ${convertusd(widget.rates, usdController.text,
+                                    dropdownValue)} $dropdownValue';
                           });
                         },
                         child: const Text('Convert'),
-                        
                       ),
                     ),
                     const SizedBox(
@@ -97,7 +89,6 @@ class _UsdToAnyState extends State<UsdToAny> {
                   ],
                 ),
 
-                //Final Output
                 const SizedBox(height: 10),
                 Container(child: Text(answer))
               ])),

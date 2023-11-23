@@ -9,4 +9,6 @@ class Data extends GetxController {
   List<CurrencyRate> allData = [];
   RxDouble maxVal = 0.0.obs;
   RxDouble minVal = 0.0.obs;
+  DateTime? maxDate;
+  DateTime? minDate;
 }

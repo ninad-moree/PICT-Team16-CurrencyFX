@@ -41,7 +41,7 @@ class _CurrencyDataByDateState extends State<CurrencyDataByDate> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Currency Data by Date'),
+        title: const Text('CurrencyFX'),
       ),
       body: Center(
         child: Column(
@@ -49,7 +49,7 @@ class _CurrencyDataByDateState extends State<CurrencyDataByDate> {
           children: <Widget>[
             Text(
               'Selected Date: ${DateFormat('yyyy-MM-dd').format(selectedDate)}',
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20, fontFamily: 'OpenSans'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -73,7 +73,9 @@ class _CurrencyDataByDateState extends State<CurrencyDataByDate> {
                           return Row(
                             children: [
                               Text(
-                                  '${entry.key.toString().trim()} : ${double.parse(entry.value.toString()).toStringAsFixed(2)}'),
+                                '${entry.key.toString().trim()} : ${double.parse(entry.value.toString()).toStringAsFixed(2)}',
+                                style: TextStyle(fontFamily: 'OpenSans'),
+                              ),
                               const SizedBox(height: 30),
                             ],
                           );

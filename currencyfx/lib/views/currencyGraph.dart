@@ -54,7 +54,7 @@ class _CurrencyGraphState extends State<CurrencyGraph> {
                 const SizedBox(width: 10),
                 Text(selectedCurrencyCode),
                 PopupMenuButton<String>(
-                  initialValue: selectedCurrencyCode,
+                  initialValue: selectedCurrencyCode.trim(),
                   onSelected: (String value) {
                     setState(() {
                       selectedCurrencyCode = value;
@@ -73,7 +73,7 @@ class _CurrencyGraphState extends State<CurrencyGraph> {
               ],
             ),
             Container(
-              height: 500,
+              height: 450,
               child: LineChart(
                 LineChartData(
                   gridData: const FlGridData(show: true),
@@ -107,19 +107,19 @@ class _CurrencyGraphState extends State<CurrencyGraph> {
               height: 30,
             ),
             Text(
-              'Max Value: ${controller.maxVal.value.toStringAsFixed(3)}',
+              'Highest Value: ${controller.maxVal.value.toStringAsFixed(3)}',
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue, // Change the color as needed
+                color: Colors.blue,
               ),
             ),
             Text(
-              'Min Value: ${controller.minVal.value.toStringAsFixed(3)}',
+              'Lowest Value: ${controller.minVal.value.toStringAsFixed(3)}',
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Colors.red, // Change the color as needed
+                color: Colors.red,
               ),
             ),
           ],
@@ -134,7 +134,7 @@ class _CurrencyGraphState extends State<CurrencyGraph> {
         axisNameSize: 30,
         axisNameWidget: Text(selectedCurrencyCode),
         sideTitles: const SideTitles(
-          reservedSize: 40,
+          reservedSize: 45,
           interval: 2,
           showTitles: true,
         ),

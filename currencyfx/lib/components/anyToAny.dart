@@ -30,7 +30,7 @@ class _AnyToAnyState extends State<AnyToAny> {
           children: [
             const Text(
               'Convert Any Currency',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             const SizedBox(height: 20),
 
@@ -48,8 +48,8 @@ class _AnyToAnyState extends State<AnyToAny> {
                   child: DropdownButton<String>(
                     value: dropdownValue1,
                     icon: const Icon(Icons.arrow_drop_down_rounded),
-                    iconSize: 24,
-                    elevation: 16,
+                    iconSize: 20,
+                    elevation: 10,
                     isExpanded: true,
                     underline: Container(
                       height: 2,

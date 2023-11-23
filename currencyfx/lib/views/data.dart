@@ -19,44 +19,30 @@ class _DataScreenState extends State<DataScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Exchange Rate Data'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            DateFilterForm(
-              onFilter: (start, end) async {
-                List<CurrencyRate> data = await filterData(start, end);
-                setState(() {
-                  controller.startDate = start;
-                  controller.endDate = end;
-                  filteredData = data;
-                });
-              },
-            ),
-            // ElevatedButton(
-            //   onPressed: () async {
-            //     List<CurrencyRate> data = await filterData(startDate, endDate);
-            //     setState(() {
-            //       filteredData = data;
-            //     });
-            //   },
-            //   child: Text("Load Data"),
-            // ),
-            SizedBox(height: 16),
-
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => CurrencyGraph(
-                        filteredData: filteredData,
-                      ));
-                },
-                child: Text('Graphs')),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          DateFilterForm(
+            onFilter: (start, end) async {
+              List<CurrencyRate> data = await filterData(start, end);
+              setState(() {
+                controller.startDate = start;
+                controller.endDate = end;
+                filteredData = data;
+              });
+            },
+          ),
+          SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+              Get.to(() => CurrencyGraph(
+                    filteredData: filteredData,
+                  ));
+            },
+            child: Text('Show Charts'),
+          ),
+        ],
       ),
     );
   }

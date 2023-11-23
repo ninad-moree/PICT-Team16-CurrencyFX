@@ -1,5 +1,4 @@
 import 'package:currencyfx/model/currencymodel.dart';
-import 'package:currencyfx/views/conversion.dart';
 import 'package:currencyfx/views/data.dart';
 import 'package:currencyfx/views/singlecurrency.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        brightness: Brightness.light,
       ),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
       home: const MyHomePage(),
     );
   }
@@ -36,20 +38,13 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('CurrencyFX'),
       ),
       body: Center(
         child: Column(
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DataScreen()),
-                );
-              },
-              child: Text('View Data'),
-            ),
+            DataScreen(),
+            //       CurrencyDataByDate(),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -57,16 +52,11 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => CurrencyDataByDate()),
                 );
               },
-              child: Text('View Data'),
+              child:
+                  Text('Click Here to know your currency on a particular date'),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Conversion()),
-                );
-              },
-              child: Text('View Data'),
+            SizedBox(
+              height: 20,
             ),
             ElevatedButton(
               onPressed: () {
@@ -75,7 +65,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Home()),
                 );
               },
-              child: Text('View Data'),
+              child: Text('Click Here for Conversion of Currency'),
             ),
           ],
         ),

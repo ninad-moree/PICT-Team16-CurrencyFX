@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:currencyfx/model/currencymodel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'VariableController.dart';
@@ -32,6 +33,7 @@ Future<Map<DateTime, double>> extractCurrencyData(
   List<CurrencyRate> actualFilteredData = await filteredData;
   String targetString = 'U.S. dollar   (USD)';
   for (var entry in actualFilteredData) {
+    double ratio = 0.0;
     String matchingKey = entry.rates.keys.firstWhere(
         (key) => key.trim() == targetString.trim(),
         orElse: () => '');
@@ -42,12 +44,21 @@ Future<Map<DateTime, double>> extractCurrencyData(
     if (matchingKey.isNotEmpty && matchingKey2.isNotEmpty) {
       double value1 = double.parse(entry.rates[matchingKey]!);
       double value2 = double.parse(entry.rates[matchingKey2]!);
-      double ratio = value2 / value1;
+      ratio = value2 / value1;
       currencyData[entry.date] = ratio;
     }
+    // if (controller.maxDate == null ||
+    //     ratio > currencyData[controller.maxDate!]!) {
+    //   controller.maxDate = entry.date;
+    // }
+
+    // if (controller.minDate == null ||
+    //     ratio < currencyData[controller.minDate!]!) {
+    //   controller.minDate = entry.date;
+    // }
   }
   controller.maxVal.value =
-      currencyData.values.reduce((max, e) => max > e ? max : e);
+      currencyData.values.  reduce((max, e) => max > e ? max : e);
   controller.minVal.value =
       currencyData.values.reduce((min, e) => min < e ? min : e);
 
