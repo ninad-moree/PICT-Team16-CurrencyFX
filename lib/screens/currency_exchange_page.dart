@@ -53,18 +53,6 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
 
   Future<void> loadQuarterlyCSVData(
       int selectedYear, int selectedQuarter) async {
-    // String csvString = await rootBundle.loadString(
-    //   'quarter_csvs/${selectedYear}_Quarter$selectedQuarter.csv',
-    // );
-
-    // List<List<dynamic>> parsedCsv =
-    //     const CsvToListConverter().convert(csvString);
-    // currencyColumns = parsedCsv[0].skip(1).cast<String>().toList();
-
-    // setState(() {
-    //   csvData = parsedCsv;
-    // });
-
     try {
       String csvString = await rootBundle.loadString(
         'quarter_csvs/${selectedYear}_Quarter$selectedQuarter.csv',
@@ -89,15 +77,6 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
   }
 
   Future<void> loadMonthlyCSVData(int selectedYear, int selectedMonth) async {
-    // String csvString = await rootBundle.loadString(
-    //   'month_csvs/${selectedYear}_Month_$selectedMonth.csv',
-    // );
-
-    // String filePath = 'month_csvs/$selectedYear' '_Month_$selectedMonth.csv';
-    // log(filePath);
-    // String csvString = await rootBundle.loadString(filePath);
-    // Check if the file path is constructed correctly
-
     try {
       String filePath = 'month_csvs/$selectedYear' '_Month_$selectedMonth.csv';
       String csvString = await rootBundle.loadString(filePath);
