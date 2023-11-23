@@ -20,6 +20,11 @@ How to run the project
 3.Install Dependencies
 4.Run the App (using flutter dependencies)
 
+Libraries Used/Requirements:
+1.Pandas
+2.Numpy
+3.Statsmodel
+
 
 
 
