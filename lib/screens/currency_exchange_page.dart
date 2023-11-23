@@ -1,3 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:developer';
+
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -49,31 +53,70 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
 
   Future<void> loadQuarterlyCSVData(
       int selectedYear, int selectedQuarter) async {
-    String csvString = await rootBundle.loadString(
-      'quarter_csvs/${selectedYear}_Quarter$selectedQuarter.csv',
-    );
+    // String csvString = await rootBundle.loadString(
+    //   'quarter_csvs/${selectedYear}_Quarter$selectedQuarter.csv',
+    // );
 
-    List<List<dynamic>> parsedCsv =
-        const CsvToListConverter().convert(csvString);
-    currencyColumns = parsedCsv[0].skip(1).cast<String>().toList();
+    // List<List<dynamic>> parsedCsv =
+    //     const CsvToListConverter().convert(csvString);
+    // currencyColumns = parsedCsv[0].skip(1).cast<String>().toList();
 
-    setState(() {
-      csvData = parsedCsv;
-    });
+    // setState(() {
+    //   csvData = parsedCsv;
+    // });
+
+    try {
+      String csvString = await rootBundle.loadString(
+        'quarter_csvs/${selectedYear}_Quarter$selectedQuarter.csv',
+      );
+
+      List<List<dynamic>> parsedCsv =
+          const CsvToListConverter().convert(csvString);
+      currencyColumns = parsedCsv[0].skip(1).cast<String>().toList();
+
+      setState(() {
+        csvData = parsedCsv;
+      });
+      // Process the CSV data...
+    } catch (e) {
+      log('Error loading CSV file: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error loading CSV file: $e'),
+        ),
+      );
+    }
   }
 
   Future<void> loadMonthlyCSVData(int selectedYear, int selectedMonth) async {
-    String csvString = await rootBundle.loadString(
-      'month_csvs/${selectedYear}_Month_$selectedMonth.csv',
-    );
+    // String csvString = await rootBundle.loadString(
+    //   'month_csvs/${selectedYear}_Month_$selectedMonth.csv',
+    // );
 
-    List<List<dynamic>> parsedCsv =
-        const CsvToListConverter().convert(csvString);
-    currencyColumns = parsedCsv[0].skip(1).cast<String>().toList();
+    // String filePath = 'month_csvs/$selectedYear' '_Month_$selectedMonth.csv';
+    // log(filePath);
+    // String csvString = await rootBundle.loadString(filePath);
+    // Check if the file path is constructed correctly
 
-    setState(() {
-      csvData = parsedCsv;
-    });
+    try {
+      String filePath = 'month_csvs/$selectedYear' '_Month_$selectedMonth.csv';
+      String csvString = await rootBundle.loadString(filePath);
+
+      List<List<dynamic>> parsedCsv =
+          const CsvToListConverter().convert(csvString);
+      currencyColumns = parsedCsv[0].skip(1).cast<String>().toList();
+      setState(() {
+        csvData = parsedCsv;
+      });
+      // Process the CSV data...
+    } catch (e) {
+      log('Error loading CSV file: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error loading CSV file: $e'),
+        ),
+      );
+    }
   }
 
   List<ChartSampleData> getChartData(String currency1, String currency2) {
@@ -390,9 +433,6 @@ class _CurrencyExchangePageState extends State<CurrencyExchangePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Expanded(
-              //   child: buildChart(),
-              // ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.7,
                 child: buildChart(),
