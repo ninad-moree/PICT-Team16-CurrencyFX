@@ -34,6 +34,12 @@ REPRESENTATION OF THE INTERFACE
 
 ![WhatsApp Image 2023-11-23 at 10 12 36](https://github.com/FireFeast7/PICT-Team16-CurrencyFX/assets/132999100/c41aba76-f1ba-4395-9792-848b3e62d388)
 
+![image](https://github.com/FireFeast7/PICT-Team16-CurrencyFX/assets/141946634/bf31e5cf-a8fe-43a4-aec8-47c259708eb8)
+
+![image](https://github.com/FireFeast7/PICT-Team16-CurrencyFX/assets/141946634/db0a25bd-71a6-4f04-ab48-9f6b8fd194b2)
+
+![image](https://github.com/FireFeast7/PICT-Team16-CurrencyFX/assets/141946634/8b347136-9205-4b81-b499-539ec7df8983)
+
 
 
 
